@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Diwali | Personalized Wishes</title>
+  <meta name="theme-color" content="#3b1d5a" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&family=Playfair+Display:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg1: #240046;
+      --bg2: #5a189a;
+      --bg3: #9d4edd;
+      --bg4: #ff8fab;
+      --gold: #f8d66d;
+      --gold-deep: #d4a72c;
+      --maroon: #6b1b2a;
+      --orange: #ff7a2f;
+      --accent: #ffd7a8;
+      --soft: #ffffffcc;
+      --white: #fff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    html,
+    body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    body {
+      margin: 0;
+      color: var(--soft);
+      font-family: Poppins, system-ui, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 800px at 50% 50%, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0)) fixed,
+        linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3), var(--bg4));
+      background-size: 120% 120%, 400% 400%;
+      animation: bgShift 16s ease-in-out infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes bgShift {
+      0% {
+        background-position: 50% 50%, 0% 50;
+      }
+
+      50% {
+        background-position: 50% 50%, 100% 50;
+      }
+
+      100% {
+        background-position: 50% 50%, 0% 50;
+      }
+    }
+
+    /* Blinking, moving stars */
+    .blinking-stars {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #ffd700, 0 0 4px #fff;
+      animation: blink 2s infinite alternate, moveStar 22s linear infinite;
+      opacity: .7;
+    }
+
+    @keyframes blink {
+      from {
+        opacity: .4;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      to {
+        opacity: .4;
+      }
+    }
+
+    @keyframes moveStar {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-130px);
+      }
+    }
+
+    /* Other background effects */
+    #fireworks {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      filter: saturate(1.2);
+    }
+
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background-image: radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, .8) 40%, transparent 41%),
+        radial-gradient(1.5px 1.5px at 70% 60%, rgba(255, 255, 255, .6) 40%, transparent 41%),
+        radial-gradient(1.2px 1.2px at 40% 80%, rgba(255, 255, 255, .5) 40%, transparent 41%);
+      animation: drift 30s linear infinite;
+      opacity: .35;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-80px);
+      }
+    }
+
+    /* Floating diyas */
+    .floating-diyas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: visible;
+    }
+
+    .diya {
+      position: absolute;
+      bottom: 0;
+      left: var(--left);
+      width: 40px;
+      height: 60px;
+      background: radial-gradient(circle at 50% 25%, #ffdb4d, #cc8c00 80%);
+      border-radius: 20px 20px 15px 15px;
+      box-shadow: 0 0 15px 6px rgba(255, 195, 50, 0.7), inset 0 5px 5px rgba(255, 255, 153, 0.9);
+      animation: floatUpDown 6s ease-in-out infinite;
+      animation-delay: var(--delay);
+      filter: drop-shadow(0 0 6px rgba(255, 180, 40, 0.8));
+    }
+
+    @keyframes floatUpDown {
+      0% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-20vh);
+        opacity: 0;
+      }
+    }
+
+    .diya::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 18px;
+      background: radial-gradient(ellipse at center, #fff7ad 0%, #ffa500 70%);
+      border-radius: 50% 50% 45% 45%;
+      filter: drop-shadow(0 0 6px rgba(255, 240, 150, 0.8));
+      animation: flameFlicker 1.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes flameFlicker {
+      from {
+        transform: translateX(-50%) scale(1, 0.95);
+        opacity: 0.9;
+      }
+
+      to {
+        transform: translateX(-50%) scale(1.08, 1.1);
+        opacity: 1;
+      }
+    }
+    .topbar {
+     justify-content: flex-end; /* Changed */
+   }
+
+   .brand {
+     position: absolute; /* Added */
+     left: 50%; /* Added */
+     transform: translateX(-50%); /* Added */
+     width: max-content; /* Changed */
+   }
+   
+    /* --- New Styles for Social Icons --- */
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .social-icon {
+      color: var(--gold);
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .social-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+      filter: drop-shadow(0 0 5px rgba(248, 214, 109, 0.7));
+      vertical-align: middle;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.1);
+      color: var(--white);
+    }
+
+    .topbar {
+  position: relative; /* Needed for child absolute positioning */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This creates space between items */
+  padding: 16px 30px;
+}
+
+.brand {
+  position: absolute; /* Takes the title out of the layout flow */
+  left: 50%; /* Positions the left edge at the center */
+  transform: translateX(-50%); /* Shifts it left by half its own width to perfectly center it */
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: 56px;
+  color: #ffdd94;
+  text-shadow: 0 0 8px rgba(255, 215, 100, 0.9), 0 0 16px rgba(255, 160, 40, 0.75), 0 0 24px rgba(255, 140, 0, 0.5);
+}
+
+/* This is the new container for your logos and button */
+.top-actions {
+  /* This rule is now part of the .topbar using justify-content, but we can keep it for clarity */
+  margin-left: auto; /* Pushes this group to the far right */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+    .music-btn {
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .2);
+      color: var(--white);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: .2s transform ease, .25s background ease;
+      box-shadow: var(--shadow);
+    }
+
+    .music-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, .2);
+    }
+
+    #app {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      min-height: calc(100vh - 78px);
+    }
+
+    .card {
+      width: 92vw;
+      max-width: 980px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+      border: 1px solid rgba(255, 215, 100, 0.4);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      box-sizing: border-box;
+    }
+
+    .title {
+      margin: 0 0 12px;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      color: #ffdd94;
+      text-shadow: 0 0 8px rgba(255, 215, 100, 0.9), 0 0 16px rgba(255, 160, 40, 0.75), 0 0 24px rgba(255, 140, 0, 0.5);
+      letter-spacing: .4px;
+    }
+
+    .form {
+      display: grid;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field span {
+      font-weight: 600;
+      color: #fff7df;
+      text-shadow: 0 0 6px rgba(255, 200, 120, 0.8), 0 0 12px rgba(255, 170, 70, 0.6);
+    }
+
+    .field input[type="text"],
+    .field input[type="file"] {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, .25);
+      background: rgba(0, 0, 0, .25);
+      color: var(--white);
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .hint {
+      opacity: .7;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .05));
+      color: #e0ec2c;
+      padding: 10px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: .25s transform ease, .25s background ease;
+      box-shadow: 0 0 8px rgba(10, 10, 10, 0.7), inset 0 0 14px rgba(173, 61, 238, 0.9);
+      font-weight: 700;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      background: rgba(252, 249, 249, 0.2);
+    }
+
+    .primary {
+      border-color: var(--gold-deep);
+      background: linear-gradient(180deg, #7a3a9e66, #6b1b2a66);
+    }
+
+    .secondary {
+      border-color: #ffffff33;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .share-block {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+      border: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    .share-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    #shareLink {
+      flex: 1;
+      min-width: 0;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, .25);
+      background: rgba(0, 0, 0, .25);
+      color: var(--white);
+      padding: 10px 12px;
+      font-weight: 600;
+      box-shadow: 0 0 6px rgba(248, 214, 109, 0.5);
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .share-buttons .btn {
+      background: linear-gradient(180deg, var(--bg3), var(--bg2));
+      color: var(--gold);
+      border: 1px solid var(--gold-deep);
+      padding: 10px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(248, 214, 109, 0.6);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .share-buttons .btn:hover {
+      background: linear-gradient(180deg, var(--bg4), var(--bg3));
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+      color: #fff;
+    }
+
+    .hero {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0) 60%);
+      box-shadow: 0 0 20px rgba(248, 214, 109, .35), inset 0 0 30px rgba(248, 214, 109, .2);
+      overflow: hidden;
+    }
+
+    .photo-frame::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 6px double rgba(248, 214, 109, .4);
+      filter: drop-shadow(0 0 8px rgba(248, 214, 109, .6));
+      animation: ringglow 3.2s ease-in-out infinite;
+    }
+
+    @keyframes ringglow {
+
+      0%,
+      100% {
+        opacity: .5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .photo-frame img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.05) saturate(1.1);
+    }
+
+    /* Responsive for small devices */
+    @media (max-width:600px) {
+      .headline .script {
+        font-size: 40px;
+      }
+
+      .photo-frame {
+        width: 135px;
+        height: 135px;
+      }
+
+      .card {
+        padding: 10px;
+      }
+
+      .brand {
+        font-size: 38px;
+      }
+    }
+
+    .diya-float {
+      position: absolute;
+      bottom: -6px;
+      right: -10px;
+      width: 64px;
+      height: 64px;
+      animation: floatUpDown var(--speed, 18s) linear infinite;
+    }
+
+    @keyframes floaty {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    .diya-base {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+      height: 18px;
+      border-radius: 14px 14px 6px 6px;
+      background: radial-gradient(60% 80% at 50% 40%, #ffb76a, #cc6a28);
+      box-shadow: inset 0 4px 10px rgba(0, 0, 0, .25), 0 0 10px rgba(255, 140, 64, .45);
+    }
+
+    .diya-flame {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      width: 16px;
+      height: 26px;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at 50% 40%, #fff6a8, #ffb347 55%, rgba(255, 120, 0, 0) 70%);
+      border-radius: 50% 50% 50% 50%;
+      filter: blur(.2px) drop-shadow(0 0 6px rgba(255, 190, 80, .9));
+      animation: flicker .18s infinite alternate ease-in-out;
+    }
+
+    @keyframes flicker {
+      from {
+        transform: translateX(-50%) scale(1, .95);
+      }
+
+      to {
+        transform: translateX(-50%) scale(1.05, 1.05);
+      }
+    }
+
+    .headline .script {
+      font-family: "Great Vibes", cursive;
+      font-size: 48px;
+      color: #ffdd94;
+      text-shadow: 0 0 8px rgba(255, 215, 100, 0.9), 0 0 16px rgba(255, 160, 40, 0.75), 0 0 24px rgba(255, 140, 0, 0.5);
+      margin: 0;
+    }
+
+    .sub {
+      margin: 6px 0 0;
+      font-size: 18px;
+      color: #fff7df;
+      text-shadow: 0 0 6px rgba(255, 200, 120, 0.8), 0 0 12px rgba(255, 170, 70, 0.6);
+    }
+
+    .glow-pulse {
+      animation: glowpulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glowpulse {
+
+      0%,
+      100% {
+        text-shadow: 0 0 10px rgba(248, 214, 109, .5), 0 0 18px rgba(212, 167, 44, .2);
+      }
+
+      50% {
+        text-shadow: 0 0 18px rgba(248, 214, 109, .9), 0 0 36px rgba(212, 167, 44, .35);
+      }
+    }
+
+    .greeting {
+      margin: 18px 0 0;
+    }
+
+    .greeting .line {
+      font-size: 20px;
+      line-height: 1.6;
+      margin: 6px 0;
+      opacity: .0;
+      color: #fff7df;
+      text-shadow: 0 0 6px rgba(255, 200, 120, 0.8), 0 0 12px rgba(255, 170, 70, 0.6);
+    }
+
+    .type {
+      animation: typeIn .9s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: .5s;
+    }
+
+    .delay-2 {
+      animation-delay: 1.1s;
+    }
+
+    .delay-3 {
+      animation-delay: 1.8s;
+    }
+
+    .accent {
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(255, 215, 168, .35);
+    }
+
+    @keyframes typeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .foot {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 16px;
+      opacity: .75;
+      color: #fff7df;
+      text-shadow: 0 0 6px rgba(255, 210, 140, 0.9);
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="fireworks" aria-hidden="true"></canvas>
+  <div class="particles" aria-hidden="true"></div>
+  <div class="blinking-stars" aria-hidden="true"></div>
+  <div class="floating-diyas" aria-hidden="true">
+    <div class="diya" style="--left:12vw; --delay:0s;"></div>
+    <div class="diya" style="--left:35vw; --delay:3s;"></div>
+    <div class="diya" style="--left:60vw; --delay:1.5s;"></div>
+    <div class="diya" style="--left:85vw; --delay:4.5s;"></div>
+  </div>
+  <header class="topbar">
+    <div class="top-actions">
+  <a href="https://github.com/VirajsNexus" target="_blank" rel="noopener" class="social-icon" title="GitHub Profile">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="GitHub icon"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21-.15.46-.55.38A8.013 8.013 0 010 8z"></path></svg>
+  </a>
+  <a href="https://www.linkedin.com/in/viraj-jamdhade9420/" target="_blank" rel="noopener" class="social-icon" title="LinkedIn Profile">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="LinkedIn icon"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+  </a>
+</div>
+    <h1 class="brand glow-pulse">Happy Diwali</h1>
+    <button id="musicToggle" class="music-btn" aria-label="Toggle music" title="Toggle music"> 🔇</button>
+  </header>
+  <h1 class="brand glow-pulse" style="text-align: center;font: size 30px;">Wishing you a Happy Diwali from VirajsNexus</h1>
+  <main id="app">
+    <section id="create-view" class="card">
+      <h2 class="title">Create Your Wish</h2>
+      <form id="create-form" class="form">
+        <label class="field">
+          <span>Name</span>
+          <input id="senderName" type="text" placeholder="Your name" required maxlength="40" />
+        </label>
+        <label class="field">
+          <span>Photo</span>
+          <input id="photoInput" type="file" accept="image/*" />
+          <small class="hint">Optional. A circular, glowing frame will be applied.</small>
+        </label>
+        <div class="actions">
+          <button type="submit" class="btn primary">Generate</button>
+          <button id="clearForm" type="button" class="btn">Reset</button>
+        </div>
+      </form>
+      <div id="shareBlock" class="share-block hidden">
+        <p>Your shareable link:</p>
+        <div class="share-row">
+          <input id="shareLink" type="text" readonly />
+          <button id="copyLink" class="btn">Copy</button>
+        </div>
+        <div class="share-buttons">
+          <a id="waShare" class="btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a id="igShare" class="btn" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </section>
+    <section id="greet-view" class="card hidden">
+      <div class="hero">
+        <div class="photo-frame">
+          <img id="recipientPhoto" alt="Sender photo" />
+          <div class="diya-float" aria-hidden="true">
+            <div class="diya-base"></div>
+            <div class="diya-flame"></div>
+          </div>
+        </div>
+        <div class="headline">
+          <h2 class="script glow-pulse">Happy Diwali</h2>
+          <p class="sub">From <span id="senderLabel"></span></p>
+        </div>
+      </div>
+      <div class="greeting">
+        <p class="line type">🌟 May your world be filled with lights of joy,</p>
+        <p class="line type delay-1">laughter brighter than diyas 🪔, and</p>
+        <p class="line type delay-2">moments sweeter than mithai 🍬!</p>
+        <p class="line type delay-3 accent">💛 Celebrate the sparkle within you — this Diwali! 💛</p>
+      </div>
+      <div class="actions">
+        <button id="createYourOwn" class="btn secondary">Create for You</button>
+      </div>
+    </section>
+  </main>
+  <audio id="bgm" loop preload="auto" src="music/diwali_instrumental.mp3"></audio>
+  <footer class="foot">
+     <small>© 2025 VirajsNexus. All rights reserved.</small><br />
+    <small>Made with lights, joy, and love.</small>
+  </footer>
+  <!-- SCRIPT START -->
+  <script>
+    // ----- Blinking, moving stars -----
+    function spawnBlinkingStars() {
+      const starDiv = document.querySelector('.blinking-stars');
+      starDiv.innerHTML = '';
+      const stars = 64;
+      for (let i = 0; i < stars; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = 2 + Math.random() * 4;
+        const color = Math.random() < 0.5 ? '#fff' : '#ffd700';
+        star.style.width = star.style.height = `${size}px`;
+        star.style.background = color;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 2.5}s, ${Math.random() * 25}s`;
+        starDiv.appendChild(star);
+      }
+    }
+    spawnBlinkingStars();
+    window.addEventListener('resize', spawnBlinkingStars);
+    // ----- Fireworks JS -----
+    (function () {
+      const canvas = document.getElementById('fireworks');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H, dpr = Math.min(2, window.devicePixelRatio || 1);
+      function resize() {
+        W = canvas.width = Math.floor(window.innerWidth * dpr);
+        H = canvas.height = Math.floor(window.innerHeight * dpr);
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+      }
+      resize();
+      window.addEventListener('resize', resize);
+      const GRAVITY = 0.03, FIREWORKS = [];
+      const MAX_PARTICLES = 56, MIN_INT = 16, MAX_INT = 26;
+      function spawn(x = Math.random() * W, y = H * 0.3 + Math.random() * H * 0.35) {
+        const hue = Math.floor(180 + Math.random() * 180);
+        const parts = [];
+        for (let i = 0; i < MAX_PARTICLES; i++) {
+          const ang = (Math.PI * 2) * (i / MAX_PARTICLES) + Math.random() * 0.35;
+          const sp = 1.5 + Math.random() * 2.1;
+          parts.push({ x, y, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp, life: 0, maxLife: 60 + Math.floor(Math.random() * 28), hue, size: 0.8 + Math.random() * 1.8 });
+        }
+        FIREWORKS.push({ parts });
+      }
+      let tick = 0, next = Math.floor(MIN_INT + Math.random() * (MAX_INT - MIN_INT));
+      (function loop() {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = 'rgba(0,0,0,0.08)';
+        ctx.fillRect(0, 0, W, H);
+        ctx.globalCompositeOperation = 'lighter';
+        if (tick % next === 0) {
+          spawn();
+          if (Math.random() < 0.45) spawn(W * Math.random() * 0.5, H * (0.25 + Math.random() * 0.5));
+          next = Math.floor(MIN_INT + Math.random() * (MAX_INT - MIN_INT));
+        }
+        tick++;
+        for (let f = FIREWORKS.length - 1; f >= 0; f--) {
+          const fw = FIREWORKS[f];
+          for (const p of fw.parts) {
+            p.life++;
+            p.vy += GRAVITY * 0.15;
+            p.x += p.vx;
+            p.y += p.vy;
+            const a = Math.max(0, 1 - p.life / p.maxLife);
+            const sat = 80 + Math.sin((p.life / 8)) * 20;
+            ctx.beginPath();
+            ctx.fillStyle = `hsla(${p.hue}, ${sat}%, 60%, ${a * 0.9})`;
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+            if (Math.random() < 0.25) {
+              ctx.beginPath();
+              ctx.fillStyle = `hsla(${p.hue}, 90%, 80%, ${a * 0.35})`;
+              ctx.arc(p.x + (Math.random() - 0.5) * 3, p.y + (Math.random() - 0.5) * 3, 0.8, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+          fw.parts = fw.parts.filter(p => p.life < p.maxLife);
+          if (!fw.parts.length) FIREWORKS.splice(f, 1);
+        }
+        requestAnimationFrame(loop);
+      })();
+      window.addEventListener('click', (e) => {
+        spawn(e.clientX, e.clientY);
+      });
+    })();
+    // ----- Main App Logic -----
+    function getParams() {
+      const u = new URL(window.location.href);
+      return u.searchParams;
+    }
+    const bgm = document.getElementById('bgm');
+    const musicToggle = document.getElementById('musicToggle');
+    function setMusicIcon(isOn) { musicToggle.textContent = isOn ? '🔊' : '🔇'; }
+    function saveMusicPref(isOn) { try { localStorage.setItem('diwali_music_on', isOn ? '1' : '0'); } catch { } }
+    function getMusicPref() { try { return localStorage.getItem('diwali_music_on') === '1'; } catch { return false; } }
+    async function tryPlayBgm() {
+      try {
+        await bgm.play();
+        setMusicIcon(true);
+        saveMusicPref(true);
+      } catch (e) {
+        setMusicIcon(false);
+        saveMusicPref(false);
+      }
+    }
+    musicToggle.addEventListener('click', async () => {
+      if (bgm.paused) {
+        await tryPlayBgm();
+      } else {
+        bgm.pause();
+        setMusicIcon(false);
+        saveMusicPref(false);
+      }
+    });
+    const createView = document.getElementById('create-view');
+    const greetView = document.getElementById('greet-view');
+    const senderNameInput = document.getElementById('senderName');
+    const photoInput = document.getElementById('photoInput');
+    const shareBlock = document.getElementById('shareBlock');
+    const shareLink = document.getElementById('shareLink');
+    const copyLinkBtn = document.getElementById('copyLink');
+    const waShare = document.getElementById('waShare');
+    const igShare = document.getElementById('igShare');
+    const clearFormBtn = document.getElementById('clearForm');
+    const senderLabel = document.getElementById('senderLabel');
+    const recipientPhoto = document.getElementById('recipientPhoto');
+    const createYourOwn = document.getElementById('createYourOwn');
+    let currentObjectUrl = null;
+    let currentDataUrl = null;
+    function fileToDataURL(file) {
+      return new Promise((res, rej) => {
+        const fr = new FileReader();
+        fr.onload = () => res(fr.result);
+        fr.onerror = rej;
+        fr.readAsDataURL(file);
+      });
+    }
+    function sparkleBurst(x, y) {
+      const layer = document.createElement('div');
+      layer.className = 'sparkle-burst';
+      const rect = document.body.getBoundingClientRect();
+      const cx = x ?? rect.width / 2;
+      const cy = y ?? rect.height / 2;
+      for (let i = 0; i < 24; i++) {
+        const dot = document.createElement('i');
+        const a = Math.random() * Math.PI * 2;
+        const r = 6 + Math.random() * 16;
+        dot.style.left = `${cx}px`;
+        dot.style.top = `${cy}px`;
+        dot.style.setProperty('--x', `${Math.cos(a) * r}px`);
+        dot.style.setProperty('--y', `${Math.sin(a) * r}px`);
+        layer.appendChild(dot);
+      }
+      document.body.appendChild(layer);
+      setTimeout(() => layer.remove(), 850);
+    }
+    function buildShareUrl({ name, embed, dataUrl }) {
+      const u = new URL(window.location.href);
+      u.searchParams.set('name', name);
+      if (embed && dataUrl) {
+        u.searchParams.set('img', dataUrl);
+      } else {
+        u.searchParams.delete('img');
+      }
+      return u.toString();
+    }
+    function setShareTargets(url) {
+      shareLink.value = url;
+      const encoded = encodeURIComponent(url);
+      waShare.href = `https://wa.me/?text=${encoded}`;
+      igShare.href = `https://www.instagram.com/?url=${encoded}`;
+    }
+    document.getElementById('create-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = senderNameInput.value.trim();
+      if (!name) { senderNameInput.focus(); return; }
+      const file = photoInput.files && photoInput.files[0];
+      if (currentObjectUrl) { URL.revokeObjectURL(currentObjectUrl); currentObjectUrl = null; }
+      currentDataUrl = null;
+      if (file) {
+        currentObjectUrl = URL.createObjectURL(file);
+        recipientPhoto.src = currentObjectUrl;
+        try {
+          if (file.size <= 250000) {
+            currentDataUrl = await fileToDataURL(file);
+          }
+        } catch { }
+      } else {
+        recipientPhoto.src = 'diwali photo.jpg';
+      }
+      senderLabel.textContent = name;
+      createView.classList.add('hidden');
+      greetView.classList.remove('hidden');
+      const url = buildShareUrl({ name, embed: !!currentDataUrl, dataUrl: currentDataUrl });
+      shareBlock.classList.remove('hidden');
+      setShareTargets(url);
+      sparkleBurst();
+    });
+    copyLinkBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(shareLink.value);
+        copyLinkBtn.textContent = 'Copied!';
+        setTimeout(() => copyLinkBtn.textContent = 'Copy', 1200);
+      } catch {
+        copyLinkBtn.textContent = 'Select & Copy';
+        shareLink.select();
+      }
+    });
+    clearFormBtn.addEventListener('click', () => {
+      senderNameInput.value = '';
+      photoInput.value = '';
+      shareBlock.classList.add('hidden');
+      shareLink.value = '';
+    });
+    createYourOwn.addEventListener('click', () => {
+      greetView.classList.add('hidden');
+      createView.classList.remove('hidden');
+      sparkleBurst();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    function bootFromParams() {
+      const params = getParams();
+      const name = params.get('name');
+      const img = params.get('img');
+      if (name) {
+        senderLabel.textContent = name;
+        createView.classList.add('hidden');
+        greetView.classList.remove('hidden');
+        if (img && img.startsWith('data:image/')) {
+          recipientPhoto.src = img;
+        } else {
+          recipientPhoto.src = 'diwali photo.jpg';
+        }
+        const url = buildShareUrl({ name, embed: !!img, dataUrl: img || null });
+        shareBlock.classList.remove('hidden');
+        setShareTargets(url);
+        if (getMusicPref()) {
+          tryPlayBgm();
+        } else {
+          setMusicIcon(false);
+        }
+      } else {
+        const pref = getMusicPref();
+        setMusicIcon(pref);
+      }
+    }
+    bootFromParams();
+    let firstInteractionBound = false;
+    function bindFirstInteraction() {
+      if (firstInteractionBound) return;
+      firstInteractionBound = true;
+      const handler = async () => {
+        if (getMusicPref() && bgm.paused) {
+          await tryPlayBgm();
+        }
+        window.removeEventListener('pointerdown', handler);
+      };
+      window.addEventListener('pointerdown', handler, { once: true });
+    }
+    bindFirstInteraction();
+  </script>
+  <!-- SCRIPT END -->
+</body>
+
+</html>
